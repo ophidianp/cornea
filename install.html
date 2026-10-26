@@ -439,6 +439,9 @@ a.card:hover .card-go .arrow { transform: translateX(4px); }
 .aurora-a { background: radial-gradient(circle closest-side, var(--glow), transparent); width: 70vw; height: 70vw; }
 .aurora-b { background: radial-gradient(circle closest-side, rgba(255, 184, 107, 0.16), transparent); width: 60vw; height: 60vw; }
 .grad { animation: none; }
+/* headline words are split into inline-block spans (own layers), so the gradient text clip has to sit on each word */
+.grad .w > span { background: linear-gradient(100deg, var(--accent) 0%, var(--accent-2) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; padding-bottom: 0.08em; }
+.split .w { padding-bottom: 0.2em; margin-bottom: -0.2em; }
 .marquee-track { will-change: transform; }
 .cta::before { will-change: transform; }
 @media (max-width: 860px), (hover: none) {
