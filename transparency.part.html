@@ -1,0 +1,59 @@
+    <section class="section tr-facts" aria-label="At a glance" style="padding-top: 24px">
+      <div class="cards">
+        <article class="card reveal">
+          <span class="card-tag">100%</span>
+          <h3>Written entirely by AI</h3>
+          <p>The shaders, the settings menus, the build tools, this site and its copy. <strong>Nothing was written by hand.</strong> You can read the whole conversation at the bottom of this page.</p>
+        </article>
+        <article class="card reveal">
+          <span class="card-tag">MODELS</span>
+          <h3>Claude Opus 5.5 and Sonnet 5.5</h3>
+          <p>Both ran through Claude Code. In the log below, <span id="n-opus">Opus</span> and <span id="n-sonnet">Sonnet</span> wrote the replies, and each one is labelled with the model that wrote it.</p>
+        </article>
+        <article class="card reveal">
+          <span class="card-tag">HUMAN</span>
+          <h3>One person steering</h3>
+          <p>A person set the goals, sent screenshots, tested in game on a Ryzen 5 5500 and an RX 6500 XT, and decided what to keep. The AI can't see the game, so tuning followed that feedback.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="photon-title" style="padding-top: 0">
+      <div class="work">
+        <div class="work-sticky reveal">
+          <p class="eyebrow">Where it comes from</p>
+          <h2 id="photon-title">Inspired by Photon. Not Photon.</h2>
+          <p>Cornea chases the warm, soft look of Photon by SixthSurge. Here is how close the two really are, and where the line sits.</p>
+        </div>
+        <div class="work-list">
+          <div class="work-item reveal"><span class="idx">A</span><div><h3>Photon was the target</h3><p>The goal was Photon's mood at a higher frame rate on a modest card. The comparison screenshots on the Features page are Photon, shown only so you can judge for yourself.</p></div><span class="tag">GOAL</span></div>
+          <div class="work-item reveal"><span class="idx">B</span><div><h3>Its source was read as a reference</h3><p>The AI studied Photon's shader files to learn techniques such as the sky look-up table, the light volume for coloured torches, soft shadows and temporal anti-aliasing. Photon's licence allows examining and learning from its source.</p></div><span class="tag">STUDY</span></div>
+          <div class="work-item reveal"><span class="idx">C</span><div><h3>The code was written fresh</h3><p>Cornea's files were written new, with their own structure and many different choices, and no Photon file was copied in. But reading Photon shaped the design, so the two share ideas and some layout. We can't promise no passage ever resembles it.</p></div><span class="tag">CODE</span></div>
+          <div class="work-item reveal"><span class="idx">D</span><div><h3>Only on this site, for now</h3><p>Cornea is not on Modrinth, because it is AI-generated work. A CurseForge release may come later, but not yet, so this site is the only place to get it.</p></div><span class="tag">SHARING</span></div>
+          <div class="work-item reveal"><span class="idx">E</span><div><h3>Checked, but young</h3><p>Every program was compile-checked in several setting combinations and the author tested it in game. It is new, so expect rough edges and report what you find.</p></div><span class="tag">STATUS</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="chat-section" aria-labelledby="log-title">
+      <div class="chat-intro">
+        <div class="reveal">
+          <p class="eyebrow">The receipts</p>
+          <h2 id="log-title">The whole conversation.</h2>
+        </div>
+        <p class="reveal">From the first message to the request for this page. Only what was said in the chat is shown: tool use is left out, and file paths, local addresses and emails are masked. It reads like a messaging app, but you can't reply.</p>
+      </div>
+
+      <div class="phone reveal">
+        <div class="phone-bar">
+          <img src="img/icon.png" alt="">
+          <div><b>Claude Code · Cornea</b><small id="chat-meta">Loading the conversation…</small></div>
+          <button class="jump" id="chat-jump" type="button">Jump to start</button>
+        </div>
+        <div class="chat" id="chat" role="log" aria-label="Full chat log" tabindex="0">
+          <p class="chat-empty">Loading…</p>
+        </div>
+        <div class="chat-foot" id="chat-foot">Read-only copy of the session. Scroll to read.</div>
+      </div>
+      <p class="fine" style="text-align:center; margin-top:18px">Not affiliated with SixthSurge, Mojang, Microsoft or Anthropic.</p>
+    </section>
