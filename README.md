@@ -1,7 +1,7 @@
 # Cornea Shaders
 
 A Photon-inspired Iris shaderpack built to run fast on mid/low-end GPUs
-(target: RX 6500 XT, 1080p, 100–120 fps on the Medium profile).
+(target: RX 6500 XT, 1080p, 100–120 fps on the Ultra profile).
 
 Made entirely with AI (Claude Opus 5.5 and Sonnet 5.5), steered and tested by
 one person. The code was written fresh and no Photon file is included, but
