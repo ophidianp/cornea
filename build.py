@@ -175,7 +175,7 @@ home = f"""  <div class="wrap">
     <section class="section next-grid" aria-label="Explore">
       <div class="cards">
 {tile("LOOK", "See what it does", "Coloured torchlight, soft shadows, two cloud layers and water you can see into.", "features.html", "Features")}
-{tile("VERSUS", "Drag the line", "Cornea and Photon from the same spot, with the frame rate on each.", "features.html#compare", "Compare")}
+{tile("VERSUS", "Drag the line", "Seven scenes from the Overworld, Nether and End, shot in the same spot with Cornea and Photon.", "features.html#compare", "Compare")}
 {tile("SETUP", "Three steps", "Add Iris and Sodium, drop in the zip, pick a profile. That is all of it.", "install.html", "Install")}
       </div>
     </section>

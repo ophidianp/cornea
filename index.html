@@ -331,6 +331,20 @@ section { position: relative; }
 .site-footer nav { display: flex; gap: 22px; flex-wrap: wrap; }
 .site-footer a:hover { color: var(--ink); }
 
+/* Compare carousel */
+.car-bar { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 16px; margin-top: 18px; }
+.car-info { display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center; min-width: 0; }
+.car-info b { font: 700 clamp(17px, 2.2vw, 21px)/1.2 var(--display); letter-spacing: -0.01em; color: var(--ink); }
+.car-info > span { font: 500 12px/1.4 var(--mono); color: var(--faint); letter-spacing: 0.06em; font-variant-numeric: tabular-nums; }
+.car-btn { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; border: 1px solid var(--line-strong); background: var(--surface); color: var(--ink); cursor: pointer; transition: background 0.4s var(--ease), border-color 0.4s var(--ease), transform 0.4s var(--ease); }
+.car-btn svg { width: 22px; height: 22px; }
+.car-btn:hover { background: var(--accent-soft); border-color: var(--accent); }
+.car-btn:active { transform: scale(0.94); }
+.car-btn:focus-visible, .car-dot:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.car-dots { display: flex; justify-content: center; gap: 8px; margin-top: 14px; }
+.car-dot { width: 8px; height: 8px; padding: 0; border-radius: 999px; border: 0; background: var(--line-strong); cursor: pointer; transition: width 0.5s var(--ease), background 0.4s var(--ease); }
+.car-dot[aria-selected="true"] { width: 26px; background: var(--accent); }
+
 /* Responsive */
 @media (max-width: 980px) {
   .hero, .section-head, .work, .compat, .faq, .cta { grid-template-columns: 1fr; }
@@ -532,7 +546,7 @@ a.card:hover .card-go .arrow { transform: translateX(4px); }
         <a class="card reveal" href="features.html#compare">
           <span class="card-tag">VERSUS</span>
           <h3>Drag the line</h3>
-          <p>Cornea and Photon from the same spot, with the frame rate on each.</p>
+          <p>Seven scenes from the Overworld, Nether and End, shot in the same spot with Cornea and Photon.</p>
           <span class="card-go">Compare <span class="arrow">→</span></span>
         </a>
         <a class="card reveal" href="install.html">
@@ -784,16 +798,15 @@ a.card:hover .card-go .arrow { transform: translateX(4px); }
   }
 
   /* ---------- Compare ---------- */
-  const scenes = {
-    plains: { a: "plains-cornea", b: "plains-photon", alt: "plains at midday", fa: 158, fb: 98,
-      note: "Village plains at midday. This Cornea shot is from an earlier build; brightness and warmth were raised afterwards to sit closer to Photon." },
-    lava: { a: "lava-cornea", b: "lava-photon", alt: "a Nether lava sea", fa: 245, fb: 71,
-      note: "A Nether lava sea from a cliff edge. Taken before Cornea's Nether fog and ambient light were darkened to match Photon's mood." },
-    tunnel: { a: "tunnel-cornea", b: "tunnel-photon", alt: "an unlit tunnel", fa: 250, fb: 60,
-      note: "An unlit tunnel with no light source. Cornea now keeps unlit Nether stone much darker than in this earlier shot." },
-    glow: { a: "glow-cornea", b: "glow-photon", alt: "a tunnel lit by one glowstone block", fa: 247, fb: 59,
-      note: "The same tunnel lit by a single glowstone block. Since this shot, Nether block light in Cornea falls off faster for tighter pools of light." },
-  };
+  const scenes = [
+    { title: "Cave mouth", tag: "OVERWORLD · CAVE", alt: "a cave mouth" },
+    { title: "River valley from above", tag: "OVERWORLD · DAY", alt: "a river valley seen from high above" },
+    { title: "Under the river", tag: "OVERWORLD · UNDERWATER", alt: "the riverbed seen from underwater" },
+    { title: "Crimson cliffs", tag: "NETHER · LAVA SEA", alt: "crimson cliffs over a lava sea" },
+    { title: "Warped shore", tag: "NETHER · LAVA SEA", alt: "a warped forest on the shore of a lava sea" },
+    { title: "The main island", tag: "END · SKY", alt: "the main End island and its pillars" },
+    { title: "City and ship", tag: "END · OUTER ISLANDS", alt: "an End city and End ship" },
+  ];
   if (document.getElementById("compare-box")) {
   const box = document.getElementById("compare-box");
   const imgA = document.getElementById("cmp-a"), imgB = document.getElementById("cmp-b");
@@ -808,33 +821,38 @@ a.card:hover .card-go .arrow { transform: translateX(4px); }
   box.tabIndex = -1;
   range.addEventListener("input", () => setPos(+range.value));
 
-  const tabs = [...document.querySelectorAll(".scene-tab")];
-  // warm the cache so switching is instant
-  Object.values(scenes).forEach((s) => { [s.a, s.b].forEach((n) => { const i = new Image(); i.src = `img/${n}.webp`; }); });
-  const show = (key) => {
-    const s = scenes[key];
-    tabs.forEach((t) => t.setAttribute("aria-selected", t.dataset.scene === key));
+  // Carousel: one wipe viewer, scenes stepped with the buttons or the dots
+  const src = (i, which) => `img/cmp-${i + 1}-${which}.webp`;
+  const warm = (i) => { i = (i + scenes.length) % scenes.length; ["cornea", "photon"].forEach((w) => { const im = new Image(); im.src = src(i, w); }); };
+  const dotsBox = document.getElementById("car-dots");
+  const dots = scenes.map((s, i) => {
+    const d = document.createElement("button");
+    d.type = "button"; d.className = "car-dot"; d.setAttribute("role", "tab");
+    d.setAttribute("aria-label", `Scene ${i + 1}: ${s.title}`);
+    d.addEventListener("click", () => show(i));
+    dotsBox.append(d);
+    return d;
+  });
+  let scene = 0;
+  const show = (i) => {
+    scene = (i + scenes.length) % scenes.length;
+    const s = scenes[scene];
     box.classList.add("is-loading");
     let pending = 2;
     const done = () => { if (--pending === 0) box.classList.remove("is-loading"); };
     imgA.onload = done; imgB.onload = done;
-    imgA.src = `img/${s.a}.webp`; imgA.alt = "Cornea, " + s.alt;
-    imgB.src = `img/${s.b}.webp`; imgB.alt = "Photon, " + s.alt;
+    imgA.src = src(scene, "cornea"); imgA.alt = "Cornea, " + s.alt;
+    imgB.src = src(scene, "photon"); imgB.alt = "Photon, " + s.alt;
     if (imgA.complete) done(); if (imgB.complete) done();
-    document.getElementById("fps-a").textContent = s.fa + " FPS";
-    document.getElementById("fps-b").textContent = s.fb + " FPS";
-    document.getElementById("stat-a").textContent = s.fa;
-    document.getElementById("stat-b").textContent = s.fb;
-    document.getElementById("scene-note").textContent = s.note;
+    document.getElementById("scene-title").textContent = s.title;
+    document.getElementById("scene-tag").textContent = s.tag;
+    document.getElementById("scene-count").textContent = `${scene + 1} / ${scenes.length}`;
+    dots.forEach((d, k) => d.setAttribute("aria-selected", k === scene));
+    warm(scene + 1); warm(scene - 1);
   };
-  tabs.forEach((t) => t.addEventListener("click", () => show(t.dataset.scene)));
-  document.getElementById("scene-tabs").addEventListener("keydown", (e) => {
-    const i = tabs.findIndex((t) => t.getAttribute("aria-selected") === "true");
-    const n = e.key === "ArrowRight" ? i + 1 : e.key === "ArrowLeft" ? i - 1 : null;
-    if (n === null) return;
-    const next = tabs[(n + tabs.length) % tabs.length];
-    next.focus(); show(next.dataset.scene);
-  });
+  document.getElementById("car-prev").addEventListener("click", () => show(scene - 1));
+  document.getElementById("car-next").addEventListener("click", () => show(scene + 1));
+  show(0);
   // a gentle hint that the line moves
   if (!reduce) {
     const io = new IntersectionObserver((entries) => {
