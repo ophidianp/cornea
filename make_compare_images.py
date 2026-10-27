@@ -16,5 +16,5 @@ for k in range(7):
         y0 = max((h - ch) // 2, 0)
         im = im.crop((x0, y0, x0 + cw, min(y0 + ch, h)))
         p = os.path.join(out, f"cmp-{k + 1}-{which}.webp")
-        im.save(p, "WEBP", quality=96, method=6)
+        im.save(p, "WEBP", quality=98, method=6)
         print(f"cmp-{k+1}-{which}", (w, h), "->", im.size, os.path.getsize(p) // 1024, "KB")
