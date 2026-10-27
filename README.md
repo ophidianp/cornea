@@ -11,7 +11,7 @@ chases; Cornea is not affiliated with it. Details and the full chat log are on
 the website (the `website` branch).
 
 ## Install
-Click the green code button on the top right, then select download as a `.zip` file.
+Click the green code button on the top right, then select download as a `.zip` file, or just download from the website.
 Then drop `Cornea Shaders.zip` into your instance's `shaderpacks` folder and pick it
 in Iris (Video Settings → Shader Packs). Requires Iris 1.7+ (tested to compile
 for Iris 1.11 / MC 26.x).
