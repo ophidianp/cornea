@@ -84,7 +84,7 @@ footer = """    <footer class="site-footer">
         <a href="https://modrinth.com/mod/iris" target="_blank" rel="noopener">Iris ↗</a>
         <a href="https://ophidianp.github.io/chlorine" target="_blank" rel="noopener">Chlorine ↗</a>
       </nav>
-      <span>Not affiliated with Mojang or Microsoft.</span>
+      <span>&copy; Pavan Nemani &middot; All Rights Reserved (ARR) &middot; Not affiliated with Mojang or Microsoft.</span>
     </footer>"""
 
 extra_css = """
