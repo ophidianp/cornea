@@ -54,3 +54,8 @@ for Iris 1.11 / MC 26.x).
 ## Status
 Compiles cleanly for all programs and setting presets. **Not yet tested
 in-game**, so expect brightness and colour tuning to be needed.
+
+## License
+
+All Rights Reserved (ARR). Copyright (c) 2026 Pavan Nemani.
+This project is not open source; see [LICENSE](LICENSE) for what you may and may not do.
