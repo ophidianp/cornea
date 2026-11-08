@@ -10,6 +10,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Manrope:wght@500;600;700;800&display=swap">
+<link rel="stylesheet" href="liquid-glass.css?v=1">
+<script src="liquid-glass.js?v=1"></script>
 <style>
 /* Layout: Chlorine's system (pill header, spotlight cards, sticky lists) recoloured teal for an eye that sees light */
 :root {
@@ -378,6 +380,48 @@ section { position: relative; }
   .card { padding: 24px; }
   .chips { padding: 20px; }
 }
+/* Liquid glass (liquid-glass.css + .js, from the Argon app) */
+:root {
+  --g-tint: rgba(8, 22, 26, 0.28); --g-tint-strong: rgba(8, 22, 26, 0.62);
+  --g-hi: rgba(255, 255, 255, 0.32); --g-edge: rgba(200, 255, 250, 0.12); --g-edge-dark: rgba(0, 0, 0, 0.42);
+  --g-sat: 1.25; --g-blur-flat: 10px;
+  --bubble: rgba(255, 255, 255, 0.08);
+  --bubble-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.07), 0 6px 18px -6px rgba(0, 0, 0, 0.45);
+  --lens-bg: var(--bubble); --lens-shadow: var(--bubble-shadow);
+}
+:root[data-theme="light"] {
+  --g-tint: rgba(255, 255, 255, 0.3); --g-tint-strong: rgba(255, 255, 255, 0.68);
+  --g-hi: rgba(255, 255, 255, 0.9); --g-edge: rgba(255, 255, 255, 0.75); --g-edge-dark: rgba(10, 60, 62, 0.12); --g-shadow-a: .14;
+  --bubble: rgba(255, 255, 255, 0.75);
+  --bubble-shadow: inset 0 1px 0 #fff, 0 0 0 0.5px rgba(10, 60, 62, 0.14), 0 6px 16px -6px rgba(10, 60, 62, 0.22);
+}
+html .lg {
+  border-color: transparent;
+  background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,0) 55%), var(--g-tint);
+  box-shadow: inset 0 1px .5px var(--g-hi), inset 0 -1px 1px rgba(255,255,255,.06), inset 0 0 0 1px var(--g-edge),
+    inset 0 0 14px rgba(255,255,255,.06), inset 0 -6px 14px -8px rgba(0,0,0,.22), 0 0 0 .5px var(--g-edge-dark), 0 18px 50px -18px rgba(0,0,0,.55);
+}
+:root[data-theme="light"] .lg {
+  background: linear-gradient(180deg, rgba(255,255,255,.7), rgba(255,255,255,.2) 60%), var(--g-tint);
+  box-shadow: inset 0 1px .5px var(--g-hi), inset 0 0 0 1px var(--g-edge), 0 0 0 .5px var(--g-edge-dark), 0 18px 44px -20px rgba(10,60,62,.3);
+}
+html .lg.lg-strong { background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,0) 40%), var(--g-tint-strong); }
+.site-header.lg { --rim-angle: 100deg; background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,0) 50%), color-mix(in srgb, var(--bg) 45%, transparent); }
+.site-header.lg.is-scrolled { box-shadow: inset 0 1px .5px var(--g-hi), inset 0 0 0 1px var(--g-edge), 0 0 0 .5px var(--g-edge-dark), var(--shadow); }
+html .btn-ghost.lg:hover, html .chip.lg:hover, html .scene-tab.lg:hover { filter: brightness(1.15); }
+.btn-primary { background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 88%, white), var(--accent)); box-shadow: inset 0 1px 0 rgba(255,255,255,.45), inset 0 -1px 0 rgba(0,0,0,.15), 0 10px 40px -12px var(--glow); }
+/* springy motion, like the app */
+.btn { transition: transform .7s var(--spring), background-color .5s var(--ease), border-color .5s var(--ease), box-shadow .8s var(--ease), filter .3s; }
+.btn:active, .chip:active, .theme-toggle:active, .scene-tab:active { transform: scale(.94); }
+.theme-toggle { transition: transform .7s var(--spring), border-color .5s var(--ease); }
+.nav-pill { background: var(--bubble); border: 0; box-shadow: var(--bubble-shadow); transition: transform .7s var(--spring), width .7s var(--spring), opacity .4s; }
+.card { transition: border-color .8s var(--ease), transform .9s var(--spring); }
+.card:hover { transform: translateY(-6px); }
+.chip { transition: transform .7s var(--spring), border-color .6s var(--ease); }
+.card-icon { transition: transform .9s var(--spring); }
+.scene-tab { transition: color .5s var(--ease), background-color .5s var(--ease), transform .7s var(--spring); }
+/* refraction re-renders under anything that moves: keep the aurora still behind bending glass */
+.lg-refract .aurora { animation: none; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
   html { scroll-behavior: auto; }
@@ -560,6 +604,17 @@ a.card:hover .card-go .arrow { transform: translateX(4px); }
 (() => {
   const root = document.documentElement;
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  /* Liquid glass: refraction + chromatic aberration (Chromium), glare, gliding lens (liquid-glass.js) */
+  if (window.LiquidGlass) {
+    const LG = window.LiquidGlass;
+    // strongest glass first: only the first 25 get the lens filter, the rest stay blur-only (keeps the GPU cool)
+    [[".site-header, .hero-readout", 70], [".chips", 55], [".card", 50], [".btn-ghost, .theme-toggle, .menu-toggle, .chip, .scene-tab", 44]]
+      .forEach(([sel, s]) => document.querySelectorAll(sel).forEach((el) => LG.glassify(el, s)));
+    LG.init({ max: 25 });
+    document.querySelectorAll(".scene-tabs").forEach((c) => LG.attachLens(c, ".scene-tab"));
+    const mb = document.getElementById("menu-toggle"), mn = document.getElementById("nav");
+    mb?.addEventListener("click", () => { if (mn?.classList.contains("is-open")) LG.morphFrom(mb, mn, 520); });
+  }
 
   /* ---------- Theme ---------- */
   const toggle = document.getElementById("theme-toggle");
