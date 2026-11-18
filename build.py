@@ -95,7 +95,7 @@ a.card { display: block; color: inherit; text-decoration: none; }
 .card-go { display: inline-flex; gap: 8px; align-items: center; margin-top: 22px; font: 500 13px var(--mono); color: var(--accent); letter-spacing: 0.02em; }
 .card-go .arrow { transition: transform 0.4s var(--ease); }
 a.card:hover .card-go .arrow { transform: translateX(4px); }
-.next-grid { padding-block: 24px 40px; }
+.next-grid { padding-block: clamp(64px, 8vw, 104px) 40px; }
 .notfound .hero-stage { cursor: crosshair; }
 .nf-code { font: 500 13px var(--mono); color: var(--faint); letter-spacing: 0.04em; }
 .menu-toggle { display: none; position: relative; width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line); background: transparent; cursor: pointer; padding: 0; }
@@ -107,13 +107,13 @@ a.card:hover .card-go .arrow { transform: translateX(4px); }
 .menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
 .menu-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-5px) rotate(-45deg); }
 .menu-toggle:hover { border-color: var(--line-strong); }
-.dl-steps { padding-block: 24px 40px; }
+.dl-steps { padding-block: clamp(48px, 6vw, 80px) 40px; }
 @media (max-width: 860px) {
   .site-header { position: relative; }
   .menu-toggle { display: block; }
   .site-nav { display: flex !important; position: absolute; top: calc(100% + 10px); left: 0; right: 0; margin: 0;
     flex-direction: column; gap: 2px; padding: 8px; border-radius: 24px; border: 1px solid var(--line-strong);
-    background: color-mix(in srgb, var(--bg) 94%, transparent); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+    background: var(--surface);
     box-shadow: var(--shadow); opacity: 0; visibility: hidden; transform: translateY(-8px); pointer-events: none;
     transition: opacity 0.3s var(--ease), transform 0.45s var(--ease), visibility 0s linear 0.45s; }
   .site-nav.is-open { opacity: 1; visibility: visible; transform: none; pointer-events: auto; transition-delay: 0s; }
