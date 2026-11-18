@@ -13,6 +13,29 @@ def write_css(path, name, accent):
     open(path, "w", encoding="utf-8").write(css.replace("__NAME__", name).replace("__ACCENT__", accent))
 
 
+FAQ_JS = """<script>
+/* FAQ: slide each answer open and closed instead of snapping */
+document.querySelectorAll(".faq details").forEach((d) => {
+  const ans = d.querySelector(":scope > :not(summary)");
+  let anim = null;
+  d.querySelector("summary").addEventListener("click", (e) => {
+    if (!ans || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    e.preventDefault();
+    const opening = !d.open || d.classList.contains("closing");
+    const from = d.open ? ans.offsetHeight : 0;
+    if (anim) anim.cancel();
+    d.open = true;
+    d.classList.toggle("closing", !opening);
+    const to = opening ? ans.scrollHeight : 0;
+    anim = ans.animate([{ height: from + "px", opacity: opening ? 0 : 1 }, { height: to + "px", opacity: opening ? 1 : 0 }],
+      { duration: opening ? 340 : 260, easing: "cubic-bezier(0.2, 0.7, 0.2, 1)" });
+    anim.onfinish = () => { anim = null; if (!opening) { d.open = false; d.classList.remove("closing"); } };
+  });
+});
+</script>
+"""
+
+
 class Site:
     def __init__(self, out, brand, icon, nav, fine, css, glass_css, glass_js, prefix="", cta=None, head_extra="", home=None, logo=True, portfolio=True):
         self.out, self.brand, self.icon, self.nav, self.fine = out, brand, icon, nav, fine
@@ -62,7 +85,7 @@ class Site:
 {body.strip()}
 </main>
 
-<footer>
+{FAQ_JS if 'class="faq"' in body else ""}<footer>
   <p class="made"><span>Made by</span> {self._me()}</p>
   <p class="fine">{self.fine}{self._portfolio_link()}</p>
 </footer>
