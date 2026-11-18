@@ -1,3 +1,6 @@
+/* Transparency page: read-only chat log loaded from chat-log.json (standalone script) */
+(() => {
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* ---------- Transparency: read-only chat log (chat-log.json) ---------- */
   const chat = document.getElementById("chat");
@@ -51,3 +54,4 @@
       meta.textContent = "Unavailable";
     });
   }
+})();

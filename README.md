@@ -1,9 +1,10 @@
 # Cornea website
 
-The site for [Cornea Shaders](../../tree/main), built from one source file.
+The site for [Cornea Shaders](../../tree/main): plain, minimal pages built by one script.
 
-- `page.html` holds the styles, sections and script once.
-- `python build.py` writes `index.html`, `features.html`, `install.html`, `download.html`, `transparency.html` and `404.html`.
+- `build.py` holds every page's text and writes `index.html`, `features.html`, `install.html`, `download.html`, `transparency.html` and `404.html` (run `python build.py`).
+- `site.css` is the shared stylesheet. The header is the only liquid-glass element (`liquid-glass.css` + `liquid-glass.js`).
+- `chat.js` shows the chat log on the Transparency page.
 - `python make_chatlog.py <session.jsonl>` exports the chat log shown on the Transparency page to `chat-log.json`.
 - `python serve.py` serves the site locally, with the 404 page for unknown addresses.
 - `downloads/Cornea-Shaders.zip` is the shaderpack the Download page links to.
