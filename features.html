@@ -4,10 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Cornea is an Iris shaderpack for Minecraft 26.x with volumetric clouds, coloured light and soft shadows, tuned to run well on mid-range graphics cards.">
+<meta name="theme-color" content="#0c0c0a">
 <title>Features · Cornea Shaders</title>
-<link rel="icon" type="image/png" href="img/icon.png">
+<link rel="icon" href="img/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500&amp;family=Instrument+Serif:ital@0;1&amp;display=swap">
 <link rel="stylesheet" href="liquid-glass.css?v=2">
-<link rel="stylesheet" href="site.css?v=1">
+<link rel="stylesheet" href="site.css?v=2">
 <script src="liquid-glass.js?v=2" data-auto defer></script>
 </head>
 <body>
@@ -17,81 +21,96 @@
     <a href="index.html">Home</a>
     <a href="features.html" aria-current="page">Features</a>
     <a href="install.html">Install</a>
-    <a href="download.html">Download</a>
     <a href="transparency.html">Transparency</a>
+    <a class="cta-link" href="download.html">Get Cornea</a>
   </nav>
 </header>
 
 <main>
-<h1>Photon's mood, on a smaller budget.</h1>
+<section class="wrap hero">
+<span class="badge">What you see</span>
+<h1>Photon's mood, <em>on a smaller budget.</em></h1>
 <p class="lead">Cornea aims for the warm, soft look of the big shaderpacks and spends its frame time where your eye lands first: the light near you, the sky above you, and the water in front of you.</p>
-<ul id="features">
-  <li><strong>Light that has a colour.</strong> Torches glow orange, soul fire glows blue and amethyst tints a cave purple. Light spreads through the blocks around you, and nearby blocks and mobs cast short shadows from it.</li>
-  <li><strong>A sky worth looking up at.</strong> Two layers of volumetric clouds with thin cirrus above them, auroras on clear nights, and in the End, a black hole that bends the starlight around it.</li>
-  <li><strong>Water you can see into.</strong> Uneven waves that never line up in rows, caustics dancing on the seabed and godrays under the surface. A torch or lava pool lights the water from below.</li>
-</ul>
-
-<h2 id="compare">Same spot, side by side.</h2>
+</section>
+<section class="wrap" style="padding-top:56px" id="features">
+<div class="grid ">
+<article class="card "><p class="label">Light</p><h3>Light that has a colour</h3><p>Torches glow orange, soul fire glows blue and amethyst tints a cave purple. Light spreads through the blocks around you, and nearby blocks and mobs cast short shadows from it.</p></article>
+<article class="card "><p class="label">Sky</p><h3>A sky worth looking up at</h3><p>Two layers of volumetric clouds with thin cirrus above them, auroras on clear nights, and in the End, a black hole that bends the starlight around it.</p></article>
+<article class="card "><p class="label">Water</p><h3>Water you can see into</h3><p>Uneven waves that never line up in rows, caustics dancing on the seabed and godrays under the surface. A torch or lava pool lights the water from below.</p></article>
+</div>
+</section>
+<section class="wrap section" id="compare">
+<div class="section-head"><p class="eyebrow">Side by side</p>
+<h2>Same spot. <em>Two shaderpacks.</em></h2>
 <p>Each pair was shot from the same place, with Cornea on the left and Photon on the right. Photon is made by SixthSurge and is shown here only for comparison.</p>
+</div>
+<div class="pairs">
 <figure class="pair">
-  <figcaption><strong>Cave mouth</strong> <span class="muted">· Overworld · cave</span></figcaption>
+  <figcaption>Cave mouth <span>· Overworld · cave</span></figcaption>
   <div><img src="img/cmp-1-cornea.webp" alt="Cornea, a cave mouth" loading="lazy"><small>Cornea</small></div>
   <div><img src="img/cmp-1-photon.webp" alt="Photon, a cave mouth" loading="lazy"><small>Photon</small></div>
 </figure>
 <figure class="pair">
-  <figcaption><strong>River valley from above</strong> <span class="muted">· Overworld · day</span></figcaption>
+  <figcaption>River valley from above <span>· Overworld · day</span></figcaption>
   <div><img src="img/cmp-2-cornea.webp" alt="Cornea, a river valley seen from high above" loading="lazy"><small>Cornea</small></div>
   <div><img src="img/cmp-2-photon.webp" alt="Photon, a river valley seen from high above" loading="lazy"><small>Photon</small></div>
 </figure>
 <figure class="pair">
-  <figcaption><strong>Under the river</strong> <span class="muted">· Overworld · underwater</span></figcaption>
+  <figcaption>Under the river <span>· Overworld · underwater</span></figcaption>
   <div><img src="img/cmp-3-cornea.webp" alt="Cornea, the riverbed seen from underwater" loading="lazy"><small>Cornea</small></div>
   <div><img src="img/cmp-3-photon.webp" alt="Photon, the riverbed seen from underwater" loading="lazy"><small>Photon</small></div>
 </figure>
 <figure class="pair">
-  <figcaption><strong>Crimson cliffs</strong> <span class="muted">· Nether · lava sea</span></figcaption>
+  <figcaption>Crimson cliffs <span>· Nether · lava sea</span></figcaption>
   <div><img src="img/cmp-4-cornea.webp" alt="Cornea, crimson cliffs over a lava sea" loading="lazy"><small>Cornea</small></div>
   <div><img src="img/cmp-4-photon.webp" alt="Photon, crimson cliffs over a lava sea" loading="lazy"><small>Photon</small></div>
 </figure>
 <figure class="pair">
-  <figcaption><strong>Warped shore</strong> <span class="muted">· Nether · lava sea</span></figcaption>
+  <figcaption>Warped shore <span>· Nether · lava sea</span></figcaption>
   <div><img src="img/cmp-5-cornea.webp" alt="Cornea, a warped forest on the shore of a lava sea" loading="lazy"><small>Cornea</small></div>
   <div><img src="img/cmp-5-photon.webp" alt="Photon, a warped forest on the shore of a lava sea" loading="lazy"><small>Photon</small></div>
 </figure>
 <figure class="pair">
-  <figcaption><strong>The main island</strong> <span class="muted">· End · sky</span></figcaption>
+  <figcaption>The main island <span>· End · sky</span></figcaption>
   <div><img src="img/cmp-6-cornea.webp" alt="Cornea, the main End island and its pillars" loading="lazy"><small>Cornea</small></div>
   <div><img src="img/cmp-6-photon.webp" alt="Photon, the main End island and its pillars" loading="lazy"><small>Photon</small></div>
 </figure>
 <figure class="pair">
-  <figcaption><strong>City and ship</strong> <span class="muted">· End · outer islands</span></figcaption>
+  <figcaption>City and ship <span>· End · outer islands</span></figcaption>
   <div><img src="img/cmp-7-cornea.webp" alt="Cornea, an End city and End ship" loading="lazy"><small>Cornea</small></div>
   <div><img src="img/cmp-7-photon.webp" alt="Photon, an End city and End ship" loading="lazy"><small>Photon</small></div>
 </figure>
-
-<h2 id="inside">Where the frames come from.</h2>
+</div>
+</section>
+<section class="wrap section split" style="align-items:start" id="inside">
+<div class="section-head"><p class="eyebrow">Under the hood</p>
+<h2>Where the frames <em>come from.</em></h2>
 <p>Most of Cornea's speed comes from doing expensive work less often, at lower resolution, and only when it shows.</p>
-<ul>
-  <li><strong>Half-size clouds and light shafts</strong> (sky). Clouds and godrays render at half resolution and fill in over a few frames, so they cost about a quarter of the pixels.</li>
-  <li><strong>Light that spreads a step at a time</strong> (light). Coloured light flows one block per frame through a 96-block volume around you, instead of being solved from scratch every frame.</li>
-  <li><strong>Exposure from the light, not the screen</strong> (camera). The camera sets its brightness from how much sun and sky reach you, so there's no costly average of the whole picture.</li>
-  <li><strong>Shine built into the pack</strong> (blocks). Metals, polished stone, gems and glowing ores get their gloss and surface detail from Cornea itself. No resource pack, no extra textures to read.</li>
-  <li><strong>Off really means off</strong> (settings). Every effect drops out of the shader when you switch it off, so the Low profile does less work, not just less drawing.</li>
-</ul>
-
-<h2 id="compat-title">Made for the setup you already run.</h2>
+</div>
+<div class="rows">
+<div class="row"><p class="label">A · Sky</p><div><h3>Half-size clouds and light shafts</h3><p>Clouds and godrays render at half resolution and fill in over a few frames, so they cost about a quarter of the pixels.</p></div></div>
+<div class="row"><p class="label">B · Light</p><div><h3>Light that spreads a step at a time</h3><p>Coloured light flows one block per frame through a 96-block volume around you, instead of being solved from scratch every frame.</p></div></div>
+<div class="row"><p class="label">C · Camera</p><div><h3>Exposure from the light, not the screen</h3><p>The camera sets its brightness from how much sun and sky reach you, so there's no costly average of the whole picture.</p></div></div>
+<div class="row"><p class="label">D · Blocks</p><div><h3>Shine built into the pack</h3><p>Metals, polished stone, gems and glowing ores get their gloss and surface detail from Cornea itself. No resource pack, no extra textures to read.</p></div></div>
+<div class="row"><p class="label">E · Settings</p><div><h3>Off really means off</h3><p>Every effect drops out of the shader when you switch it off, so the Low profile does less work, not just less drawing.</p></div></div>
+</div>
+</section>
+<section class="wrap section split">
+<div class="section-head"><p class="eyebrow">Works with</p>
+<h2>Made for the setup <em>you already run.</em></h2>
 <p>Cornea needs Iris, and Iris needs Sodium, so install both. It is built and tested on Minecraft 26.x, including clients that bundle them such as OneClient.</p>
-<ul>
-  <li>Required: Iris, Sodium, Minecraft 26.x</li>
-  <li>Works with: OneClient, Chlorine</li>
-  <li>Not supported yet: <s>Distant Horizons</s>, <s>Voxy</s></li>
-</ul>
-<p class="muted">Crossed out: not supported yet. Cornea skips far-distance terrain to keep its frame budget for what's close to you.</p>
+</div>
+<article class="card "><p class="label">Compatibility</p><p>Crossed out: not supported yet. Cornea skips far-distance terrain to keep its frame budget for what's close to you.</p><ul class="tags"><li class="on">Iris · required</li><li class="on">Sodium · required</li><li>Minecraft 26.x</li><li>OneClient</li><li>Chlorine</li><li class="off">Distant Horizons</li><li class="off">Voxy</li></ul></article></section>
+<section class="wrap"><div class="cta">
+<h2>Take Cornea <em>with you.</em></h2>
+<p>One zip works in every dimension. It needs Iris and Sodium.</p>
+<div class="actions"><a class="btn primary" href="download.html">Download Cornea ↓</a></div>
+</div></section>
 </main>
 
 <footer>
-  <p>&copy; Pavan Nemani · All Rights Reserved (ARR) · Not affiliated with Mojang or Microsoft.</p>
-  <nav aria-label="Footer"><a href="https://modrinth.com/mod/iris">Iris</a><a href="https://ophidianp.github.io/chlorine">Chlorine</a><a href="transparency.html">Transparency</a></nav>
+  <p class="made"><span>Made by</span> Pavan Nemani</p>
+  <p class="fine">&copy; Pavan Nemani · All Rights Reserved (ARR) · Not affiliated with Mojang or Microsoft. · <a href="https://modrinth.com/mod/iris">Iris ↗</a> <a href="https://ophidianp.github.io/chlorine">Chlorine ↗</a></p>
 </footer>
 </body>
 </html>

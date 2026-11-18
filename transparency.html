@@ -4,10 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Cornea is an Iris shaderpack for Minecraft 26.x with volumetric clouds, coloured light and soft shadows, tuned to run well on mid-range graphics cards.">
+<meta name="theme-color" content="#0c0c0a">
 <title>Transparency · Cornea Shaders</title>
-<link rel="icon" type="image/png" href="img/icon.png">
+<link rel="icon" href="img/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500&amp;family=Instrument+Serif:ital@0;1&amp;display=swap">
 <link rel="stylesheet" href="liquid-glass.css?v=2">
-<link rel="stylesheet" href="site.css?v=1">
+<link rel="stylesheet" href="site.css?v=2">
 <script src="liquid-glass.js?v=2" data-auto defer></script>
 <script src="chat.js?v=2" defer></script>
 </head>
@@ -18,46 +22,57 @@
     <a href="index.html">Home</a>
     <a href="features.html">Features</a>
     <a href="install.html">Install</a>
-    <a href="download.html">Download</a>
     <a href="transparency.html" aria-current="page">Transparency</a>
+    <a class="cta-link" href="download.html">Get Cornea</a>
   </nav>
 </header>
 
 <main>
-<h1>Made by AI, start to finish.</h1>
+<section class="wrap hero">
+<span class="badge">Transparency</span>
+<h1>Made by AI, <em>start to finish.</em></h1>
 <p class="lead">Every line of Cornea's shader code, this website and all of its text was written by AI. A person steered it, tested it in game and made the calls. This page says exactly what that means.</p>
-<ul>
-  <li><strong>100%: written entirely by AI.</strong> The shaders, the settings menus, the build tools, this site and its copy. <strong>Nothing was written by hand.</strong> You can read the whole conversation at the bottom of this page.</li>
-  <li><strong>Models: Claude Opus 5.5 and Sonnet 5.5.</strong> Both ran through Claude Code. In the log below, <span id="n-opus">Opus</span> and <span id="n-sonnet">Sonnet</span> wrote the replies, and each one is labelled with the model that wrote it.</li>
-  <li><strong>Human: one person steering.</strong> A person set the goals, sent screenshots, tested in game on a Ryzen 5 5500 and an RX 6500 XT, and decided what to keep. The AI can't see the game, so tuning followed that feedback.</li>
-</ul>
-
-<h2 id="photon-title">Inspired by Photon. Not Photon.</h2>
+</section>
+<section class="wrap" style="padding-top:56px">
+<div class="grid ">
+<article class="card "><p class="label">100%</p><h3>Written entirely by AI</h3><p>The shaders, the settings menus, the build tools, this site and its copy. <strong>Nothing was written by hand.</strong> You can read the whole conversation at the bottom of this page.</p></article>
+<article class="card "><p class="label">Models</p><h3>Claude Opus 5.5 and Sonnet 5.5</h3><p>Both ran through Claude Code. In the log below, <span id="n-opus">Opus</span> and <span id="n-sonnet">Sonnet</span> wrote the replies, and each one is labelled with the model that wrote it.</p></article>
+<article class="card "><p class="label">Human</p><h3>One person steering</h3><p>A person set the goals, sent screenshots, tested in game on a Ryzen 5 5500 and an RX 6500 XT, and decided what to keep. The AI can't see the game, so tuning followed that feedback.</p></article>
+</div>
+</section>
+<section class="wrap section" id="photon-title">
+<div class="section-head"><p class="eyebrow">Where it comes from</p>
+<h2>Inspired by Photon. <em>Not Photon.</em></h2>
 <p>Cornea chases the warm, soft look of Photon by SixthSurge. Here is how close the two really are, and where the line sits.</p>
-<ul>
-  <li><strong>Photon was the target</strong> (goal). The goal was Photon's mood at a higher frame rate on a modest card. The comparison screenshots on the Features page are Photon, shown only so you can judge for yourself.</li>
-  <li><strong>Its source was read as a reference</strong> (study). The AI studied Photon's shader files to learn techniques such as the sky look-up table, the light volume for coloured torches, soft shadows and temporal anti-aliasing. Photon's licence allows examining and learning from its source.</li>
-  <li><strong>The code was written fresh</strong> (code). Cornea's files were written new, with their own structure and many different choices, and no Photon file was copied in. But reading Photon shaped the design, so the two share ideas and some layout. We can't promise no passage ever resembles it.</li>
-  <li><strong>Only on this site, for now</strong> (sharing). Cornea is not on Modrinth, because it is AI-generated work. A CurseForge release may come later, but not yet, so this site is the only place to get it.</li>
-  <li><strong>Checked, but young</strong> (status). Every program was compile-checked in several setting combinations and the author tested it in game. It is new, so expect rough edges and report what you find.</li>
-</ul>
-
-<h2 id="log-title">The whole conversation.</h2>
+</div>
+<div class="rows">
+<div class="row"><p class="label">A · Goal</p><div><h3>Photon was the target</h3><p>The goal was Photon's mood at a higher frame rate on a modest card. The comparison screenshots on the Features page are Photon, shown only so you can judge for yourself.</p></div></div>
+<div class="row"><p class="label">B · Study</p><div><h3>Its source was read as a reference</h3><p>The AI studied Photon's shader files to learn techniques such as the sky look-up table, the light volume for coloured torches, soft shadows and temporal anti-aliasing. Photon's licence allows examining and learning from its source.</p></div></div>
+<div class="row"><p class="label">C · Code</p><div><h3>The code was written fresh</h3><p>Cornea's files were written new, with their own structure and many different choices, and no Photon file was copied in. But reading Photon shaped the design, so the two share ideas and some layout. We can't promise no passage ever resembles it.</p></div></div>
+<div class="row"><p class="label">D · Sharing</p><div><h3>Only on this site, for now</h3><p>Cornea is not on Modrinth, because it is AI-generated work. A CurseForge release may come later, but not yet, so this site is the only place to get it.</p></div></div>
+<div class="row"><p class="label">E · Status</p><div><h3>Checked, but young</h3><p>Every program was compile-checked in several setting combinations and the author tested it in game. It is new, so expect rough edges and report what you find.</p></div></div>
+</div>
+</section>
+<section class="wrap section" id="log-title">
+<div class="section-head"><p class="eyebrow">The receipts</p>
+<h2>The whole <em>conversation.</em></h2>
 <p>From the first message to the request for this page. Only what was said in the chat is shown: tool use is left out, and file paths, local addresses and emails are masked. It reads like a messaging app, but you can't reply.</p>
+</div>
 <div class="chatlog">
   <div class="chatlog-head">
     <div><b>Claude Code · Cornea</b><small id="chat-meta">Loading the conversation…</small></div>
-    <button class="button" type="button" id="chat-jump">Jump to start</button>
+    <button class="btn" type="button" id="chat-jump">Jump to start</button>
   </div>
   <div id="chat" tabindex="0" aria-label="Full chat log"><p class="chat-empty">Loading…</p></div>
   <div class="chatlog-foot" id="chat-foot">Read-only copy of the session. Scroll to read.</div>
 </div>
-<p class="muted">Not affiliated with SixthSurge, Mojang, Microsoft or Anthropic.</p>
+<p class="fine" style="margin-top:14px">Not affiliated with SixthSurge, Mojang, Microsoft or Anthropic.</p>
+</section>
 </main>
 
 <footer>
-  <p>&copy; Pavan Nemani · All Rights Reserved (ARR) · Not affiliated with Mojang or Microsoft.</p>
-  <nav aria-label="Footer"><a href="https://modrinth.com/mod/iris">Iris</a><a href="https://ophidianp.github.io/chlorine">Chlorine</a><a href="transparency.html">Transparency</a></nav>
+  <p class="made"><span>Made by</span> Pavan Nemani</p>
+  <p class="fine">&copy; Pavan Nemani · All Rights Reserved (ARR) · Not affiliated with Mojang or Microsoft. · <a href="https://modrinth.com/mod/iris">Iris ↗</a> <a href="https://ophidianp.github.io/chlorine">Chlorine ↗</a></p>
 </footer>
 </body>
 </html>
