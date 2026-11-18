@@ -24,7 +24,7 @@ S = Site(here, "Cornea", "img/icon.png",
          [("index.html", "Home"), ("features.html", "Features"), ("install.html", "Install"), ("transparency.html", "Transparency")],
          '&copy; Pavan Nemani · All Rights Reserved (ARR) · Not affiliated with Mojang or Microsoft. · '
          '<a href="https://modrinth.com/mod/iris">Iris ↗</a> <a href="https://ophidianp.github.io/chlorine">Chlorine ↗</a>',
-         css="site.css?v=2", glass_css="liquid-glass.css?v=2", glass_js="liquid-glass.js?v=2", cta=("download.html", "Get Cornea"))
+         css="site.css?v=3", glass_css="liquid-glass.css?v=2", glass_js="liquid-glass.js?v=2", cta=("download.html", "Get Cornea"))
 
 S.page("index.html", "Cornea Shaders", DESC,
     hero("Iris shaderpack · <b>Minecraft 26.x</b>", "Light the world.<br><em>Keep your frames.</em>",

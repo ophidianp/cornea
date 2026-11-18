@@ -14,11 +14,20 @@ def write_css(path, name, accent):
 
 
 class Site:
-    def __init__(self, out, brand, icon, nav, fine, css, glass_css, glass_js, prefix="", cta=None, head_extra="", home=None, logo=True):
+    def __init__(self, out, brand, icon, nav, fine, css, glass_css, glass_js, prefix="", cta=None, head_extra="", home=None, logo=True, portfolio=True):
         self.out, self.brand, self.icon, self.nav, self.fine = out, brand, icon, nav, fine
         self.css, self.glass_css, self.glass_js, self.prefix, self.cta, self.head_extra = css, glass_css, glass_js, prefix, cta, head_extra
         self.home = home or nav[0][0]
         self.logo = logo
+        self.portfolio = portfolio  # footer links to ophidianp.github.io (off on the portfolio itself)
+
+    PORTFOLIO = "https://ophidianp.github.io/"
+
+    def _me(self):
+        return f'<a href="{self.PORTFOLIO}">Pavan Nemani</a>' if self.portfolio else "Pavan Nemani"
+
+    def _portfolio_link(self):
+        return f' <a href="{self.PORTFOLIO}">Portfolio ↗</a>' if self.portfolio else ""
 
     def page(self, file, title, desc, body, scripts=(), current=None, head_top=""):
         current = file if current is None else current
@@ -54,8 +63,8 @@ class Site:
 </main>
 
 <footer>
-  <p class="made"><span>Made by</span> Pavan Nemani</p>
-  <p class="fine">{self.fine}</p>
+  <p class="made"><span>Made by</span> {self._me()}</p>
+  <p class="fine">{self.fine}{self._portfolio_link()}</p>
 </footer>
 </body>
 </html>
