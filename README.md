@@ -50,6 +50,7 @@ for Iris 1.11 / MC 26.x).
 - `tools/check.py [glslang.exe]` compile-checks every program in 4 settings
   permutations with glslang.
 - `tools/make_noise.py` regenerates `shaders/image/noise.png`.
+- `tools/make_icon.py` redraws `icon.png` and `icon-128.png` from `icon.svg`, the website's icon (needs Pillow).
 
 ## Status
 Compiles cleanly for all programs and setting presets. **Not yet tested
