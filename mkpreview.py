@@ -3,8 +3,8 @@ and index.html as a fragment because the artifact tool adds the document shell i
 import os, re
 here = os.path.dirname(os.path.abspath(__file__))
 out = os.path.join(here, "preview"); os.makedirs(out, exist_ok=True)
-dl = re.compile(r'<a class="btn primary" href="downloads/Cornea-Shaders.zip" download>.*?</a>', re.S)
-new = ('<a class="btn primary" href="install.html">How to install</a> '
+dl = re.compile(r'<a class="pill acc" href="downloads/Cornea-Shaders.zip" download>.*?</a>', re.S)
+new = ('<a class="pill acc" href="install.html">How to install</a> '
        '<small class="fine">The download is on the hosted site, not in this preview.</small>')
 for f in ("index.html", "features.html", "install.html", "download.html", "transparency.html"):
     s = open(os.path.join(here, f), encoding="utf-8").read()
