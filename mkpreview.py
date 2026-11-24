@@ -6,7 +6,7 @@ out = os.path.join(here, "preview"); os.makedirs(out, exist_ok=True)
 dl = re.compile(r'<a class="pill acc" href="downloads/Cornea-Shaders.zip" download>.*?</a>', re.S)
 new = ('<a class="pill acc" href="install.html">How to install</a> '
        '<small class="fine">The download is on the hosted site, not in this preview.</small>')
-for f in ("index.html", "features.html", "install.html", "download.html", "transparency.html"):
+for f in ("index.html", "features.html", "install.html", "download.html"):
     s = open(os.path.join(here, f), encoding="utf-8").read()
     s = dl.sub(new, s)
     if f == "index.html":

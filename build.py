@@ -1,6 +1,6 @@
 """Builds the Cornea website from this file: run `python build.py`.
 
-Writes index.html, features.html, install.html, download.html, transparency.html and
+Writes index.html, features.html, install.html, download.html and
 404.html. Each page's text lives below; the shared header/footer and the components (hero,
 cards, spec grid, pinned stage, FAQ...) come from sitekit.py, the styles from site.css and the
 behaviour from site.js. The logo and icons come from brand/make_assets.py.
@@ -11,7 +11,7 @@ can find its images and links from any missing URL.
 import os
 import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from sitekit import Site, hero, btn, head, section, split, card, grid, specgrid, marquee, rows, steps, tear, faq, cta, chatlog
+from sitekit import Site, hero, btn, head, section, split, card, grid, specgrid, marquee, rows, steps, tear, faq, cta
 
 here = os.path.dirname(os.path.abspath(__file__))
 site_base = os.environ.get("SITE_BASE", "")
@@ -23,7 +23,7 @@ BASE_SCRIPT = ("<script>(function(){var b=%s;if(!b){var h=location.hostname,s=lo
                "document.write('<base href=\"'+b+'\">');})();</script>\n") % (repr(site_base) if site_base else "''")
 
 S = Site(here, "Cornea", "https://ophidianp.github.io/cornea/",
-         [("index.html", "Home"), ("features.html", "Features"), ("install.html", "Install"), ("transparency.html", "Transparency")],
+         [("index.html", "Home"), ("features.html", "Features"), ("install.html", "Install")],
          '<span>&copy; Pavan Nemani · All Rights Reserved (ARR) · Not affiliated with Mojang or Microsoft.</span>'
          '<span class="links"><a href="https://modrinth.com/mod/iris">Iris ↗</a> <a href="https://ophidianp.github.io/chlorine">Chlorine ↗</a> '
          '<a href="https://ophidianp.github.io/">Portfolio ↗</a></span>',
@@ -111,8 +111,8 @@ S.page("install.html", "Install · Cornea Shaders", DESC,
         ("What hardware was it tuned on?", "A Ryzen 5 5500 with a 4 GB RX 6500 XT and 16 GB of memory. If you have a slower card, start with the Medium profile and turn up what you miss."),
         ("Something looks wrong. What should I send?", "A screenshot, the profile you're using, and the Iris error log if the pack fails to load. That's usually enough to find the cause."),
     ]), hid="faq-title")
-    + cta("Ready when <em>you are.</em>", "Grab the zip, or read how Cornea was made first.",
-          btn("download.html", "Go to the download →", True) + btn("transparency.html", "How it was made →")))
+    + cta("Ready when <em>you are.</em>", "Grab the zip and pick a profile.",
+          btn("download.html", "Go to the download →", True)))
 
 S.page("download.html", "Download · Cornea Shaders", DESC,
     hero("Download", "Take Cornea <em>with you.</em>", "One zip works in every dimension. It needs Iris and Sodium, and it has not been tested on every setup yet.")
@@ -134,29 +134,8 @@ S.page("download.html", "Download · Cornea Shaders", DESC,
     + section("Before and after", "Know what <em>you're getting.</em>", "", grid([
         card("First", "What you need", "Minecraft 26.x with Iris and Sodium. Cornea runs best on the Medium profile and up to Ultra.", ("install.html", "Install guide"), i=0),
         card("Compare", "See it first", "Look at the same scenes in Photon before you decide.", ("features.html#compare", "Compare"), i=1),
-        card("Honest", "How it was made", "Cornea is 100% AI-written. Read how, and see the full conversation.", ("transparency.html", "Transparency"), i=2),
+        card("Honest", "How it was made", "Cornea is 100% AI-written, steered and tested in game by a person.", i=2),
     ])))
-
-S.page("transparency.html", "Transparency · Cornea Shaders", DESC,
-    hero("Transparency", "Made by AI, <em>start to finish.</em>",
-         "Every line of Cornea's shader code, this website and all of its text was written by AI. A person steered it, tested it in game and made the calls. This page says exactly what that means.")
-    + section("", "", "", grid([
-        card("100%", "Written entirely by AI", "The shaders, the settings menus, the build tools, this site and its copy. <strong>Nothing was written by hand.</strong> You can read the whole conversation at the bottom of this page.", i=0),
-        card("Models", "Claude Opus 5.5 and Sonnet 5.5", 'Both ran through Claude Code. In the log below, <span id="n-opus">Opus</span> and <span id="n-sonnet">Sonnet</span> wrote the replies, and each one is labelled with the model that wrote it.', i=1),
-        card("Human", "One person steering", "A person set the goals, sent screenshots, tested in game on a Ryzen 5 5500 and an RX 6500 XT, and decided what to keep. The AI can't see the game, so tuning followed that feedback.", i=2),
-    ]), tight=True)
-    + split("Where it comes from", "Inspired by Photon. <em>Not Photon.</em>",
-        "Cornea chases the warm, soft look of Photon by SixthSurge. Here is how close the two really are, and where the line sits.", rows([
-        ("A · Goal", "<h3>Photon was the target</h3><p>The goal was Photon's mood at a higher frame rate on a modest card. The comparison screenshots on the Features page are Photon, shown only so you can judge for yourself.</p>"),
-        ("B · Study", "<h3>Its source was read as a reference</h3><p>The AI studied Photon's shader files to learn techniques such as the sky look-up table, the light volume for coloured torches, soft shadows and temporal anti-aliasing. Photon's licence allows examining and learning from its source.</p>"),
-        ("C · Code", "<h3>The code was written fresh</h3><p>Cornea's files were written new, with their own structure and many different choices, and no Photon file was copied in. But reading Photon shaped the design, so the two share ideas and some layout. We can't promise no passage ever resembles it.</p>"),
-        ("D · Sharing", "<h3>Only on this site, for now</h3><p>Cornea is not on Modrinth, because it is AI-generated work. A CurseForge release may come later, but not yet, so this site is the only place to get it.</p>"),
-        ("E · Status", "<h3>Checked, but young</h3><p>Every program was compile-checked in several setting combinations and the author tested it in game. It is new, so expect rough edges and report what you find.</p>"),
-    ]), sid="photon-title")
-    + section("The receipts", "The whole <em>conversation.</em>",
-        "From the first message to the request for this page. Only what was said in the chat is shown: tool use is left out, and file paths, local addresses and emails are masked. It reads like a messaging app, but you can't reply.",
-        chatlog("Claude Code · Cornea") + '<p class="fine" style="margin-top:14px">Not affiliated with SixthSurge, Mojang, Microsoft or Anthropic.</p>\n', "log-title", cls="alt"),
-    scripts=("chat.js?v=3",))
 
 S.page("404.html", "Page not found · Cornea Shaders", DESC,
     hero("Error 404", "This page is <em>in the dark.</em>",
@@ -164,4 +143,4 @@ S.page("404.html", "Page not found · Cornea Shaders", DESC,
          btn("index.html", "Back to Cornea →", True) + btn("install.html", "Install guide →")),
     current="", head_top=BASE_SCRIPT)
 
-print("built index.html, features.html, install.html, download.html, transparency.html and 404.html")
+print("built index.html, features.html, install.html, download.html and 404.html")
